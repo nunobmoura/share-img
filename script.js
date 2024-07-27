@@ -26,12 +26,16 @@ function updatePreview() {
     }
 
     // Adicionar ou remover classe com base na presença do subtítulo
+    if (mainTitleText.trim() !== '') {
+        shareContent.classList.add('has-content');
+    }
     if (subTitleText.trim() !== '') {
         shareContent.classList.add('has-subtitle');
     } else {
         shareContent.classList.remove('has-subtitle');
     }
 
+    // Atualizar a imagem SVG se um arquivo for carregado
     if (fileInput.files && fileInput.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -85,17 +89,14 @@ function exportImage() {
 }
 
 function clearImage() {
-    // Limpar campos de texto
-    document.getElementById('mainTitle').value = '';
-    document.getElementById('subTitle').value = '';
-
     // Limpar imagem e ocultar overlay
     const svgImage = document.getElementById('svgImage');
+    const fileInput = document.getElementById('imageUpload');
     svgImage.removeAttribute('href');
     svgImage.removeAttribute('filter');
     document.querySelector('.overlay').classList.add('hidden');
 
-    // Limpar cor de fundo
-    document.getElementById('bgColor').value = '#ffffff'; // Cor padrão
-    updateBackgroundColor();
+    // Limpar o input de arquivo
+    fileInput.value = ''; // Resetar o valor do input de arquivo
 }
+
