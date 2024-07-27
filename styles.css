@@ -1,0 +1,109 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.preview {
+  width: 1200px;
+  height: 630px;
+  position: relative;
+  overflow: hidden;
+  background-color: lightgray;
+}
+
+/* #textPreview {
+  position: absolute;
+  display: inline;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+
+  max-width: 600px;
+  width: 100%;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  text-align: center;
+  color: white;
+  
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -3.5px;
+  text-transform: uppercase;
+} */
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(26, 30, 34, 0.35);
+}
+#shareContent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#shareContent.has-subtitle .content--text {
+  align-items: flex-start;
+}
+
+.content--text {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* max-width: 600px; */
+  flex: 0 0 auto;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  text-transform: uppercase;
+  color: white;
+}
+
+.mainTitle {
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -3.5px;
+  text-align: center;
+}
+.subTitle {
+  font-size: 55px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.mainTitle,
+.subTitle {
+  max-width: 600px;
+}
+#shareContent.has-subtitle .mainTitle,
+#shareContent.has-subtitle .subTitle {
+  text-align: left;
+}
+
+
+
+
+
+
+
+
+.water-mark {
+  display: inline-block;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  transform: scale(.7);
+}
+
+.water-mark svg path {
+  fill: rgba(255, 255, 255, 0.5)
+}
+
