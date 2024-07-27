@@ -10,21 +10,40 @@
     <div class="container">
         <h1>Gerador de Partilhas</h1>
         <form id="shareForm">
-            <label for="imageUpload">Carregar Imagem:</label>
-            <input type="file" id="imageUpload" accept="image/*">
-            
-            <label for="mainTitle">Título:</label>
-            <input type="text" id="mainTitle" placeholder="Insira o título">
-            
-            <label for="subTitle">Subtítulo:</label>
-            <input type="text" id="subTitle" placeholder="Insira o subtítulo">
+            <div>
+              <label for="imageUpload">Carregar Imagem:</label>
+              <input type="file" id="imageUpload" accept="image/*">
+              <button type="button" id="clearButton" >Apagar Imagem</button>
+            </div>
 
-            <label for="bgColor">Cor de Fundo:</label>
-            <input type="color" id="bgColor" value="#d3d3d3">
+            <div>
+              <label for="recorteUpload">Carregar Recorte:</label>
+              <input type="file" id="recorteUpload" accept="image/*">
+              <button type="button" id="removeRecorteButton">Remover Recorte</button>
+            </div>
+
+            <div>
+              <label for="bgColor">Cor de Fundo:</label>
+              <input type="color" id="bgColor" value="#d3d3d3">
+            </div>
+
+            <div>
+              <label for="mainTitle">Título:</label>
+              <input type="text" id="mainTitle" placeholder="Insira o título">
+            </div>
+
+            <div>
+              <label for="subTitle">Subtítulo:</label>
+              <input type="text" id="subTitle" placeholder="Insira o subtítulo">
+            </div>
+            
         </form>
         <div class="preview" id="preview">
             <div class="overlay hidden"></div>
             <div id="shareContent">
+                <div class="content--recorte">
+                    <!-- Imagem do recorte aqui -->
+                </div>
                 <div class="content--text">
                     <div class="mainTitle"></div>
                     <div class="subTitle"></div>
@@ -43,10 +62,10 @@
             </div>
         </div>
         <button id="exportButton">Exportar Imagem</button>
-        <button id="clearButton">Apagar Imagem</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+

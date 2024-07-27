@@ -30,6 +30,44 @@ body {
   width: 600px;
 }
 
+#shareContent.has-subtitle .mainTitle,
+#shareContent.has-subtitle .subTitle {
+  text-align: left;
+}
+
+#shareContent.has-recorte .content--recorte {
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+#shareContent.has-recorte .content--recorte img {
+  width: 450px;
+  height: 450px;
+  object-fit: contain;
+}
+
+#shareContent.has-recorte.has-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+#shareContent.has-recorte.has-title .content--recorte {
+  width: unset;
+}
+#shareContent.has-recorte.has-title .content--recorte img {
+  width: 150px;
+  height: 150px;
+}
+#shareContent.has-recorte.has-title .content--text {
+  margin: 0;
+  align-items: flex-start;
+}
+
 .content--text {
   height: 100%;
   display: flex;
@@ -60,10 +98,6 @@ body {
 .subTitle {
   max-width: 600px;
   text-align: center;
-}
-#shareContent.has-subtitle .mainTitle,
-#shareContent.has-subtitle .subTitle {
-  text-align: left;
 }
 
 .water-mark {
