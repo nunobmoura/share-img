@@ -6,6 +6,7 @@ document.getElementById('subTitle').addEventListener('input', updatePreview);
 document.getElementById('exportButton').addEventListener('click', exportImage);
 document.getElementById('clearButton').addEventListener('click', clearImage);
 document.getElementById('removeRecorteButton').addEventListener('click', removeRecorte);
+const previewContent = document.getElementById('preview');
 
 function updatePreview() {
   const fileInput = document.getElementById('imageUpload');
@@ -14,7 +15,6 @@ function updatePreview() {
   const svgImage = document.getElementById('svgImage');
   const mainTitlePreview = document.querySelector('.mainTitle');
   const subTitlePreview = document.querySelector('.subTitle');
-  const shareContent = document.getElementById('shareContent');
 
   if (fileInput.files && fileInput.files[0]) {
     const reader = new FileReader();
@@ -31,14 +31,12 @@ function updatePreview() {
       } else {
         svgImage.removeAttribute('filter');
       }
-
-      updateOverlayVisibility();
     };
     reader.readAsDataURL(fileInput.files[0]);
+    previewContent.classList.add('has-image');
   } else {
     svgImage.removeAttribute('href');
     svgImage.removeAttribute('filter');
-    updateOverlayVisibility();
   }
 
   mainTitlePreview.innerHTML = mainTitleText.replace(/\n/g, '<br>');
@@ -51,58 +49,38 @@ function updatePreview() {
   }
 
   if (mainTitleText.trim() !== '') {
-    shareContent.classList.add('has-title');
+    previewContent.classList.add('has-title');
   } else {
-    shareContent.classList.remove('has-title');
+    previewContent.classList.remove('has-title');
   }
 
   if (subTitleText.trim() !== '') {
-    shareContent.classList.add('has-subtitle');
+    previewContent.classList.add('has-subtitle');
   } else {
-    shareContent.classList.remove('has-subtitle');
+    previewContent.classList.remove('has-subtitle');
   }
 }
 
 function updateRecorte() {
   const fileInput = document.getElementById('recorteUpload');
   const recortePreview = document.querySelector('.content--recorte');
-  const shareContent = document.getElementById('shareContent');
 
   if (fileInput.files && fileInput.files[0]) {
     const reader = new FileReader();
     reader.onload = function (e) {
       recortePreview.innerHTML = `<img src="${e.target.result}">`;
-      shareContent.classList.add('has-recorte');
+      previewContent.classList.add('has-recorte');
     };
     reader.readAsDataURL(fileInput.files[0]);
   } else {
     recortePreview.innerHTML = '';
-    shareContent.classList.remove('has-recorte');
+    previewContent.classList.remove('has-recorte');
   }
-
-  updateOverlayVisibility();
 }
 
 function updateBackgroundColor() {
   const bgColor = document.getElementById('bgColor').value;
-  document.getElementById('preview').style.backgroundColor = bgColor;
-}
-
-function updateOverlayVisibility() {
-  const overlay = document.querySelector('.overlay');
-  const imageUploaded = document.getElementById('imageUpload').files.length > 0;
-  const recorteUploaded =
-    document.querySelector('.content--recorte img') !== null;
-  const mainTitleText = document.getElementById('mainTitle').value.trim();
-
-  if (
-    (imageUploaded && (mainTitleText !== '' || recorteUploaded)) ||
-    recorteUploaded
-  ) {
-    overlay.classList.remove('hidden');
-  } else {
-    overlay.classList.add('hidden');
-  }
+  previewContent.style.backgroundColor = bgColor;
 }
 
 function exportImage() {
@@ -122,6 +100,25 @@ function exportImage() {
     });
 }
 
+
+function exportImage() {
+  const preview = document.getElementById('preview');
+
+  html2canvas(preview, {
+      useCORS: true,
+  }).then(function (canvas) {
+      canvas.toBlob(function (blob) {
+          const link = document.createElement('a');
+          link.download = 'partilha.png';
+          link.href = URL.createObjectURL(blob);
+          link.click();
+      }, 'image/png', 0.2); // O terceiro parâmetro é a qualidade (0.0 a 1.0)
+  }).catch(function (error) {
+      console.error('Erro ao exportar a imagem:', error);
+  });
+}
+
+
 function clearImage() {
   const imageUpload = document.getElementById('imageUpload');
   const svgImage = document.getElementById('svgImage');
@@ -129,8 +126,7 @@ function clearImage() {
   imageUpload.value = '';
   svgImage.removeAttribute('href');
   svgImage.removeAttribute('filter');
-
-  updateOverlayVisibility();
+  previewContent.classList.remove('has-image');
 }
 
 function removeRecorte() {
@@ -140,6 +136,4 @@ function removeRecorte() {
   recorteUpload.value = '';
   recortePreview.innerHTML = '';
   recorteUpload.dispatchEvent(new Event('change'));
-
-  updateOverlayVisibility();
 }

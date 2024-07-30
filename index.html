@@ -3,47 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Partilhas</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Imagem de partilha</title>
+    <link rel="stylesheet" href="preview-styles.css">
+    <link rel="stylesheet" href="ui-styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Gerador de Partilhas</h1>
+        <h1>Imagens de partilha</h1>
         <form id="shareForm">
-            <div>
-              <label for="imageUpload">Carregar Imagem:</label>
-              <input type="file" id="imageUpload" accept="image/*">
-              <button type="button" id="clearButton" >Apagar Imagem</button>
+            <div class="input input--image">
+                <button type="button" id="clearButton" class="btn--remove">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.87868 24.8787C-0.292893 26.0503 -0.292893 27.9497 0.87868 29.1213C2.05025 30.2929 3.94975 30.2929 5.12132 29.1213L15 19.2426L24.8787 29.1213C26.0503 30.2929 27.9497 30.2929 29.1213 29.1213C30.2929 27.9497 30.2929 26.0503 29.1213 24.8787L19.2426 15L29.1213 5.12132C30.2929 3.94975 30.2929 2.05025 29.1213 0.87868C27.9497 -0.292893 26.0502 -0.292893 24.8787 0.87868L15 10.7574L5.12132 0.87868C3.94975 -0.292893 2.05025 -0.292893 0.87868 0.87868C-0.292893 2.05025 -0.292893 3.94975 0.87868 5.12132L10.7574 15L0.87868 24.8787Z"/>
+                    </svg>
+                </button>
+                <label for="imageUpload">Imagem</label>
+                <input type="file" id="imageUpload" accept="image/*" class="custom-file-input">
             </div>
 
-            <div>
-              <label for="recorteUpload">Carregar Recorte:</label>
-              <input type="file" id="recorteUpload" accept="image/*">
-              <button type="button" id="removeRecorteButton">Remover Recorte</button>
+            <div class="input input--recorte">
+                <button type="button" id="removeRecorteButton" class="btn--remove">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.87868 24.8787C-0.292893 26.0503 -0.292893 27.9497 0.87868 29.1213C2.05025 30.2929 3.94975 30.2929 5.12132 29.1213L15 19.2426L24.8787 29.1213C26.0503 30.2929 27.9497 30.2929 29.1213 29.1213C30.2929 27.9497 30.2929 26.0503 29.1213 24.8787L19.2426 15L29.1213 5.12132C30.2929 3.94975 30.2929 2.05025 29.1213 0.87868C27.9497 -0.292893 26.0502 -0.292893 24.8787 0.87868L15 10.7574L5.12132 0.87868C3.94975 -0.292893 2.05025 -0.292893 0.87868 0.87868C-0.292893 2.05025 -0.292893 3.94975 0.87868 5.12132L10.7574 15L0.87868 24.8787Z"/>
+                    </svg>
+                </button>
+                <label for="recorteUpload">Carregar Recorte:</label>
+                <input type="file" id="recorteUpload" accept="image/*">
             </div>
 
-            <div>
+            <div class="input input--color">
               <label for="bgColor">Cor de Fundo:</label>
-              <input type="color" id="bgColor" value="#d3d3d3">
+              <input type="color" id="bgColor" value="#cacfd8">
             </div>
 
-            <div>
+            <div class="input input--title">
               <label for="mainTitle">Título:</label>
-              <input type="text" id="mainTitle" placeholder="Insira o título">
+              <input type="text" id="mainTitle">
             </div>
 
-            <div>
+            <div class="input input--subtitle">
               <label for="subTitle">Subtítulo:</label>
-              <input type="text" id="subTitle" placeholder="Insira o subtítulo">
+              <input type="text" id="subTitle">
             </div>
             
         </form>
         <div class="preview" id="preview">
             <div class="overlay hidden"></div>
             <div id="shareContent">
-                <div class="content--recorte">
-                    <!-- Imagem do recorte aqui -->
-                </div>
+                <div class="content--recorte"></div>
                 <div class="content--text">
                     <div class="mainTitle"></div>
                     <div class="subTitle"></div>
@@ -61,10 +68,12 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 59" width="56" height="59"><path d="M0,54.836c5.992-1.199,6.132-1.444,6.132-6.724V10.9c0-5.242-0.267-5.632-6.132-6.724V0h30.317  c16.605,0,25.378,5.11,25.378,17.8c0,9.563-6.9,18.909-21.205,18.909c-2.381,0.072-4.76-0.19-7.068-0.78v-2.912 c6.746-1.745,9.113-3.271,9.113-14.705c0-10.85-1.537-14.479-7.426-14.479c-3.417,0-4.071,0.933-4.071,4.773v39.509 c0,5.353,0.158,5.632,6.9,6.724v4.181H0v-4.181"></path></svg>
             </div>
         </div>
-        <button id="exportButton">Exportar Imagem</button>
+        <button id="exportButton" class="btn--export">Exportar Imagem</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-to-blob@1.0.0/canvas-to-blob.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

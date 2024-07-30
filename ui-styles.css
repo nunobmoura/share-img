@@ -1,0 +1,109 @@
+:root {
+  --main-color: #cacfd8;
+  --color-dark: #1a1e22;
+  --color-light: #fff;
+}
+body * {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+h1 {
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -.75px;
+
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+#shareForm>div {
+  margin-bottom: 2rem;
+}
+.input {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+.input input::-webkit-file-upload-button {
+  visibility: hidden;
+  width: 0;
+}
+.input input::before {
+  display: inline-block;
+  background: var(--main-color);
+  color: var(--color-dark);
+  padding: 5px 12px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 300;
+  font-size: 14px;
+  border-radius: 5rem;
+}
+.input input:hover::before,
+.input input:active::before {
+  opacity: .7;
+}
+.input--image label,
+.input--recorte label {
+  display: none;
+}
+.input--image input::before {
+  content: 'Selecionar imagem';
+}
+.input--recorte input::before {
+  content: 'Selecionar recorte';
+}
+.btn--remove {
+  padding: 0;
+  background-color: transparent;
+  border: 0px solid transparent;
+}
+.btn--remove:hover,
+.btn--remove:active {
+  opacity: .7;
+}
+.btn--remove svg {
+  width: 24px;
+  height: 14px;
+}
+.btn--remove path {
+  fill: #1a1e22;
+}
+.input--color input {
+  border-radius: 5rem;
+}
+input[type=color] {
+	-webkit-appearance: none;
+	border: none;
+	width: 80px;
+	height: 27px;
+}
+input[type=color]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type=color]::-webkit-color-swatch {
+	border: none;
+  border-radius: 5rem;
+}
+.input input[type=text] {
+  border: none;
+  border-bottom: 1px solid var(--color-dark);
+  width: 100%;
+  padding: 3px 2px;
+}
+.btn--export {
+  padding: 12px 42px;
+  border-radius: 5rem;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  font-size: 18px;
+}
+.btn--export:hover {
+  opacity: .7;
+}
