@@ -1,9 +1,13 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
 .preview {
   width: 1200px;
   height: 630px;
   position: relative;
   overflow: hidden;
-  background-color: #cacfd8;
+  background-color: lightgray;
 }
 
 .overlay.hidden {
@@ -26,25 +30,25 @@
   width: 600px;
 }
 
-#shareContent.has-subtitle .mainTitle,
-#shareContent.has-subtitle .subTitle {
+#preview.has-recorte .mainTitle,
+#preview.has-recorte .subTitle {
   text-align: left;
 }
 
-#shareContent.has-recorte .content--recorte {
+#preview.has-recorte .content--recorte {
   display: flex;  
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
 }
-#shareContent.has-recorte .content--recorte img {
+#preview.has-recorte .content--recorte img {
   width: 450px;
   height: 450px;
   object-fit: contain;
 }
 
-#shareContent.has-recorte.has-title {
+#preview.has-recorte.has-title #shareContent {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -52,20 +56,20 @@
   gap: 25px;
 }
 
-#shareContent.has-recorte.has-title .content--recorte {
+#preview.has-image.has-title .overlay {
+  display: block;
+}
+
+#preview.has-recorte.has-title .content--recorte {
   width: unset;
 }
-#shareContent.has-recorte.has-title .content--recorte img {
+#preview.has-recorte.has-title .content--recorte img {
   width: 150px;
   height: 150px;
 }
-#shareContent.has-recorte.has-title .content--text {
+#preview.has-recorte.has-title .content--text {
   margin: 0;
   align-items: flex-start;
-}
-
-#shareContent.has-recorte.has-title .content--text .mainTitle {
-  text-align: left;
 }
 
 .content--text {
@@ -84,13 +88,13 @@
 .mainTitle {
   font-size: 80px;
   font-weight: 800;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -3.5px;
 }
 .subTitle {
   font-size: 55px;
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -2px;
 }
 
